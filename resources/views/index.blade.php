@@ -157,7 +157,7 @@
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra at massa sit amet ultricies
                     </p>
                 </div>
-                <div class="row align-items-center">
+                <div class="row align-items-stretch">
 
                     @foreach($products as $product)
                         <div class="col-md-3">
