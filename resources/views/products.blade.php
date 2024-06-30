@@ -51,7 +51,7 @@
                 <div class="col-md-3">
                     <div class="product-single">
                         <div class="product-img">
-                            <img src="{{ asset('img/product-4.png"') }} alt="Product Image">
+                            <img src="{{ asset('img/product-4.png') }}" alt="Product Image">
                         </div>
                         <div class="product-content">
                             <h2>Sports Edition</h2>
