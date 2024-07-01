@@ -9,9 +9,7 @@ Route::get('/single_product/{id}', [SmartwatchController::class, 'single_product
 
 Route::get('/single_product', function(){ return redirect('/'); });
 
-Route::get('/products', function () {
-    return view('products');
-});
+Route::get('/products', [SmartwatchController::class, 'products'])->name('products');
 
 Route::get('/about', function () {
     return view('about');
