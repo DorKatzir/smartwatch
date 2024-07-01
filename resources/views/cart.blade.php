@@ -65,15 +65,14 @@
             <table>
                 @if(Session::has('cart'))
                 <tr>
-                       <td>Total</td>
-                 
-                       <td>$199</td>
-                 
-                </tr>
+                    <td>Total</td>
+                    @if(Session::has('total'))
+                        <td>${{ Session::get('total') }}</td>    
+                    @endif
+                 </tr>   
                 @endif
             </table>
         </div>
-        
         
 
         <div class="checkout-container">
