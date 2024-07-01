@@ -45,18 +45,48 @@ class CartController extends Controller
 
                 $cart[$id] = $product_arr;
                 $request->session()->put('cart', $cart);
-
             } 
             // if product alreay in cart
             else {
-
+                echo "<script>alert('Product is already in Cart')</script>";
             }
 
+            return view('/cart');
         }
         // check if we dont have a cart in session
         else {
-            //
+            $cart = [];
+
+            $id = $request->input('id');
+            $name = $request->input('name');
+            $price = $request->input('price'); // original price
+            $sale_price = $request->input('sale_price'); // discounted price
+            $quantity = $request->input('quantity');
+            $image = $request->input('image');
+
+            if ($sale_price !== null) {
+                $price_to_charge = $sale_price;
+            } else {
+                $price_to_charge = $price;
+            }
+
+            $product_arr = [
+                'id' => $id,
+                'name' => $name,
+                'price' => $price_to_charge,
+                'quantity' => $quantity,
+                'image' => $image
+            ];
+
+            $cart[$id] = $product_arr;
+            $request->session()->put('cart', $cart);
+
+            return view('/cart');
         }
+
     }
+
+
+
 
 }
