@@ -36,7 +36,7 @@
                         <li><a href="#products">Products</a></li>
                         <li><a href="">About</a></li>
                         <li><a href="#testimonials">Reviews</a></li>
-                        <li><a href="">Cart</a></li>
+                        <li><a href="/cart">Cart</a></li>
                     
                     </ul>
                 </nav>

@@ -187,7 +187,7 @@
 
                 </div>
 
-                <div class="mt-5 text-center"><a href="" class="btn btn-primary">Buy Now</a></div>
+                <div class="mt-5 text-center"><a href="/products" class="btn btn-primary">Buy Now</a></div>
 
             </div>
         </div>
