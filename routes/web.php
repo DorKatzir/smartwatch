@@ -14,7 +14,8 @@ Route::get('/products', [SmartwatchController::class, 'products'])->name('produc
 
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', function () { return view('about'); });
+
+Route::post('/add_to_cart', [CartController::class, 'add_to_cart'])->name('add_to_cart');
+
 
