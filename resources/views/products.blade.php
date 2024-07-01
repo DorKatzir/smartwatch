@@ -12,18 +12,29 @@
                 </p>
             </div>
             <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="product-single">
-                        <div class="product-img">
-                            <img src="{{ asset('img/product-1.png') }}" alt="Product Image">
+                @foreach($products as $product)
+                    <div class="col-md-3">
+                        <div class="product-single">
+                            <div class="product-img">
+                                <img src="{{ asset('img/'.$product->image) }}" width="100" alt="Product Image">
+                            </div>
+                            <div class="product-content">
+                            <h2>
+                                <a href="{{ 'single_product/'.$product->id }}">
+                                    {{ $product->name }}
+                                </a>
+                            </h2>
+                            @if($product->sale_price !== null)
+                                <h3>${{ $product->sale_price }}</h3>
+                                <h3 style="text-decoration: line-through">{{ $product->price }}</h3>
+                            @else
+                                <h3>{{ $product->price }}</h3>
+                            @endif
+                                <a class="btn" href="#">Buy Now</a>
+                            </div>
                         </div>
-                        <div class="product-content">
-                            <h2>Sports Edition</h2>
-                            <h3>$149</h3>
-                            <a class="btn" href="#">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
+                    </div> 
+                @endforeach
             </div>
 
         </div>
