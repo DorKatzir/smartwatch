@@ -567,6 +567,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #products .product-content .btn {
+    width: fit-content;
+    align-self: center;
     margin-top: auto;
     color: #4F84C4;
     font-size: 18px;

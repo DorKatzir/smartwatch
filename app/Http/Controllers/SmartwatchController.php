@@ -11,4 +11,9 @@ class SmartwatchController extends Controller
         $products =  DB::table('products')->limit(4)->get();
         return view('index', [ 'products' => $products ]);
     }
+
+    public function single_product(Request $request, $id) {
+        $product_arr =  DB::table('products')->where('id', $id)->get();
+        return view('single_product', [ 'product' => $product_arr ]);
+    }
 }
