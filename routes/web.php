@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\SmartwatchController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,9 +12,7 @@ Route::get('/single_product', function(){ return redirect('/'); });
 
 Route::get('/products', [SmartwatchController::class, 'products'])->name('products');
 
-Route::get('/cart', function () {
-    return view('cart');
-});
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 
 Route::get('/about', function () {
     return view('about');
