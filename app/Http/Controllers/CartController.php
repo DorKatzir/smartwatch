@@ -48,11 +48,15 @@ class CartController extends Controller
             } 
             // if product alreay in cart
             else {
-                echo "<script>alert('Product is already in Cart')</script>";
+                echo "<script> 
+                    alert('Product is already in Cart') ;
+                    window.location.pathname = '/cart';
+                </script>";
+                exit;
             }
 
             $this->calculateTotalCart($request);
-            return view('/cart');
+            return redirect('cart');
         }
         // check if we dont have a cart in session
         else {
@@ -83,14 +87,14 @@ class CartController extends Controller
             $request->session()->put('cart', $cart);
 
             $this->calculateTotalCart($request);
-            return view('/cart');
+            return redirect('cart');
         }
+
+        return redirect('cart');
 
     }
 
-
-
-    public function calculateTotalCart(Request $request) {
+    private function calculateTotalCart(Request $request) {
     
         $cart = $request->session()->get('cart');
     
@@ -109,6 +113,24 @@ class CartController extends Controller
     
         $request->session()->put('total', $totalPrice);
         $request->session()->put('quantity', $totalQuantitly);
+    }
+
+
+
+    public function remove_from_cart(Request $request){
+
+        if ($request->session()->has('cart')) {
+            
+            $id = $request->input('id');
+            $cart = $request->session()->get('cart');
+
+            unset($cart[$id]); // removes item from cart
+            $request->session()->put('cart', $cart); // updates the cart
+            $this->calculateTotalCart($request); // update the cart total price
+        } 
+
+        return redirect('cart');
+
     }
 
 
