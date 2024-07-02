@@ -44,10 +44,14 @@
                         </td>
 
                         <td>
-                            <form>
+                            <form method="POST" action="{{ route('edit_product_quantity') }}">
+                                @csrf
+                                <input type="submit" value="-" class="edit-btn" name="decrease_product_quantity_btn">
+
+                                <input type="hidden" name="id" value="{{ $product['id'] }}">
                                 <input type="text" name="quantity" value="{{$product['quantity']}}" readonly>
-                               
-                                <input type="submit" value="edit" class="edit-btn" name="edit_product_quantity_btn">
+                                
+                                <input type="submit" value="+" class="edit-btn" name="increase_product_quantity_btn">
                             </form>
                         </td>
 
