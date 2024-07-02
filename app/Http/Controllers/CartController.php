@@ -168,8 +168,8 @@ class CartController extends Controller
         return redirect('cart');
     }
 
-    public function checkout(Request $request) {
-        dd('checkout');
+    public function checkout() {
+        return view('checkout');
     }
 
 
