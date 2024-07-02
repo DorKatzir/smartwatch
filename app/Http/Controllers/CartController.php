@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+
     public function cart() {
         return view('cart');
     }
@@ -165,6 +166,10 @@ class CartController extends Controller
             }
         }
         return redirect('cart');
+    }
+
+    public function checkout(Request $request) {
+        dd('checkout');
     }
 
 

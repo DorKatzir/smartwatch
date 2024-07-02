@@ -25,5 +25,7 @@ Route::get('/remove_from_cart', function(){ return redirect('/'); });
 Route::post('/edit_product_quantity', [CartController::class, 'edit_product_quantity'])->name('edit_product_quantity');
 Route::get('/edit_product_quantity', function(){ return redirect('/'); });
 
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+
 
 
