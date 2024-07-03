@@ -174,17 +174,18 @@ class CartController extends Controller
     }
 
     public function place_order(Request $request){
+
         if ( $request->session()->has('cart') ) { 
 
             $name = $request->input('name');
             $email = $request->input('email');
             $phone = $request->input('phone');
             $city = $request->input('city');
-            $address = $request->input('addrress');
+            $address = $request->input('address');
 
             $cost = $request->session()->get('total');
             $status = 'not paid';
-            $date = date('d-M-Y');
+            $date = date('Y-m-d');
             
             $cart = $request->session()->get('cart');
 
@@ -207,26 +208,26 @@ class CartController extends Controller
                 $product_price = $product['price'];
                 $product_quantity = $product['quantity'];
                 $product_image = $product['image'];
-                $product_order_date = $product['order_date'];
 
                 DB::table('order_items')->insert([
-                                            'order_id' => $order_id,
-                                            'product_id' => $product_id,
-                                            'product_name' => $product_name,
-                                            'product_price' => $product_price,
-                                            'product_image' => $product_image,
-                                            'product_quantity' => $product_quantity,
-                                            'product_order_date' => $product_order_date
-                                        ]);
+                                        'order_id' => $order_id,
+                                        'product_id' => $product_id,
+                                        'product_name' => $product_name,
+                                        'product_price' => $product_price,
+                                        'product_image' => $product_image,
+                                        'product_quantity' => $product_quantity,
+                                        'order_date' => $date
+                                    ]);
 
             }
 
             $request->session()->put('order_id', $order_id);
 
-            return view('payment');
+            return redirect('payment');
+
         }
         else {
-            return redirect('/');
+            return view('home');
         }
     }
 
