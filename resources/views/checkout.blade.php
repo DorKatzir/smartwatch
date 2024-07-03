@@ -11,7 +11,7 @@
         </div>
 
         <div class="mx-auto container">
-            <form id="checkout-form" >
+            <form method="POST" action="{{ route('place_order') }}" id="checkout-form" >
                 
                 <div class="form-group checkout-small-element">
                     <label for="">Name</label>
