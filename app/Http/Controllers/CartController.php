@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -184,10 +185,19 @@ class CartController extends Controller
             $cost = $request->session()->get('total');
             $status = 'not paid';
             $date = date('d-M-Y');
-            dd($date);
+            
+            $cart = $request->session()->get('cart');
 
-
-
+            $order_id = DB::table('orders')->InsertGetId([
+                                    'cost' => $cost,	
+                                    'name' => $name,
+                                    'email' => $email,	
+                                    'status' => $status,	
+                                    'city'	=> $city,
+                                    'address' => $address,	
+                                    'phone'	=> $phone,
+                                    'date' => $date	  
+                                ], 'id');
 
         }
         else {
