@@ -172,5 +172,28 @@ class CartController extends Controller
         return view('checkout');
     }
 
+    public function place_order(Request $request){
+        if ( $request->session()->has('cart') ) { 
+
+            $name = $request->input('name');
+            $email = $request->input('email');
+            $phone = $request->input('phone');
+            $city = $request->input('city');
+            $address = $request->input('addrress');
+
+            $cost = $request->session()->get('total');
+            $status = 'not paid';
+            $date = date('d-M-Y');
+            dd($date);
+
+
+
+
+        }
+        else {
+            return redirect('/');
+        }
+    }
+
 
 }
