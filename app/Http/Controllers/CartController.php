@@ -189,16 +189,41 @@ class CartController extends Controller
             $cart = $request->session()->get('cart');
 
             $order_id = DB::table('orders')->InsertGetId([
-                                    'cost' => $cost,	
-                                    'name' => $name,
-                                    'email' => $email,	
-                                    'status' => $status,	
-                                    'city'	=> $city,
-                                    'address' => $address,	
-                                    'phone'	=> $phone,
-                                    'date' => $date	  
-                                ], 'id');
+                                                'cost' => $cost,	
+                                                'name' => $name,
+                                                'email' => $email,	
+                                                'status' => $status,	
+                                                'city'	=> $city,
+                                                'address' => $address,	
+                                                'phone'	=> $phone,
+                                                'date' => $date	  
+                                            ], 'id');
 
+            
+            foreach ($cart as $id => $product) {
+                $product = $cart[$id];
+                $product_id = $product['id'];
+                $product_name = $product['name'];
+                $product_price = $product['price'];
+                $product_quantity = $product['quantity'];
+                $product_image = $product['image'];
+                $product_order_date = $product['order_date'];
+
+                DB::table('order_items')->insert([
+                                            'order_id' => $order_id,
+                                            'product_id' => $product_id,
+                                            'product_name' => $product_name,
+                                            'product_price' => $product_price,
+                                            'product_image' => $product_image,
+                                            'product_quantity' => $product_quantity,
+                                            'product_order_date' => $product_order_date
+                                        ]);
+
+            }
+
+            $request->session()->put('order_id', $order_id);
+
+            return view('payment');
         }
         else {
             return redirect('/');
