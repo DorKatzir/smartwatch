@@ -1082,4 +1082,7 @@ th:last-child{
     background: #3d251f;
 }
 
-
+.dror{
+    display: flex;
+    justify-content: center;
+}
